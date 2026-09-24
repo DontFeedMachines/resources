@@ -32,11 +32,15 @@ Unlike a password, your voiceprint cannot be changed. Once compromised or record
 
 <Tabs>
   <TabItem label="Analog (3.5mm TRRS)">
+    
     1. Plug the Modulator's output cable into your smartphone or laptop's headphone/mic combo jack.
     2. Plug your headset into the Modulator's input jack.
     3. Toggle the switch to **Active**.
+ 
   </TabItem>
+ 
   <TabItem label="Digital (USB-C)">
+ 
     1. Connect the USB-C inline dongle to your computer.
     2. The OS will recognize it as a generic USB Audio Interface.
     3. Ensure no software noise-cancellation (like Krisp or Discord's Krisp integration) is running, as it will fight the modulator.

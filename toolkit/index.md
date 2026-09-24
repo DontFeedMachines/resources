@@ -2,8 +2,8 @@
 title: "DFM Toolkit Projects"
 description: "Documentation for the physical, digital, and cognitive tools to reclaim autonomy."
 hero:
-  title: Don't Feed Machines Toolkit
-  tagline: Reclaim your autonomy with these open-source tools.
+  title: DFM Toolkit
+  tagline: Reclaim your autonomy with open-source tools & readily available info.
   actions:
     - text: Get Started
       link: /projects/hardware-access/smart-dust-sweeper/
