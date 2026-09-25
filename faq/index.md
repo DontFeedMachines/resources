@@ -5,7 +5,7 @@ template: splash
 hero:
   tagline: practical counter-surveillance and privacy hardware builds.
   image:
-    file: ../assets/logo_retro_1bit_3d.png
+    file: ../assets/logos/dfm_icon.png
   actions:
     - text: enter the toolkit
       link: /toolkit/
