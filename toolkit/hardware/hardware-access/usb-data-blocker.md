@@ -1,8 +1,3 @@
----
-title: "USB Data Blocker"
-description: "A hardware 'condom' that severs data pins to prevent juice-jacking."
----
-
 Public USB charging stations (at airports, cafes, or hotels) are a prime vector for "juice-jacking." When you plug your phone in to charge, the station may also attempt to mount your device as a drive, inject malware, or execute commands via ADB (Android Debug Bridge) or Apple's diagnostic protocols.
 
 The **USB Data Blocker** physically severs the `D+` and `D-` data pins, allowing only the `VBUS` (Power) and `GND` (Ground) pins to connect.

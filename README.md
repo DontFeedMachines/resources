@@ -1,16 +1,15 @@
-# dfm resources
+# DFM Resources
 
-content db for dont feed machines wiki.
-sys>starlight; md files sync via git submodule to frontend repo [dfm-wiki].
+content database counterpart to the docs used in the [wiki](https://github.com/DontFeedMachines/wiki) repo. these are in plain, pure markdown, thus remaining forever portable, secure, and usable offline in any system. 
 
-## struct
+## STRUCTURE
 
 * `assets/` img files, media
-* `toolkit/` hardware proj docs, boms
-* `guides/` tech theory
-* `how-to/` assembly instr
-* `faq/` gen q&a
+* `toolkit/` hard/soft/firmware project info, docs, BOMs
+* `articles/` thoughts, investigations, R&D, tech theory
+* `guides/` assembly instructions for hardware builds, walkthroughs for  
+* `faq/` gen Q&A
 
-## license
+## LICENSE
 
-content=cc by-sa 4.0. open source. attribution req.
+content CC BY-SA 4.0. open source. attribution required

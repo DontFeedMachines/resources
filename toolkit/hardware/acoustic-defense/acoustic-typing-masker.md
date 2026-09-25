@@ -1,8 +1,3 @@
----
-title: "Acoustic Typing Masker"
-description: "Flood the room with randomized mechanical keystrokes to destroy the signal-to-noise ratio required by AI acoustic keyloggers."
----
-
 # Overview
 
 The **Acoustic Typing Masker** is a physical defense against AI-driven acoustic keyloggers. Modern machine learning models can accurately reconstruct what you are typing simply by listening to the sound of your keystrokes through a compromised microphone (e.g., a phone on your desk or a smart speaker).

@@ -1,8 +1,3 @@
----
-title: "Urban Dead Drop Maps"
-description: "A framework for establishing and maintaining offline encrypted USB dead drops."
----
-
 An **USB Dead Drop** is a USB flash drive embedded into a wall, bench, or public space, accessible to anyone who plugs their laptop into it. It creates an anonymous, offline peer-to-peer file sharing network.
 
 This project outlines the protocol for establishing these drops securely and mapping them using obfuscated coordinates.

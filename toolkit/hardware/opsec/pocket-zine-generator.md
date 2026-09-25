@@ -1,8 +1,3 @@
----
-title: "Pocket Zine Generator"
-description: "A python script that formats any markdown file into an 8-page folding zine."
----
-
 Physical media cannot be remotely deleted, algorithmically down-ranked, or subjected to DMCA takedowns by automated bots. The **Pocket Zine Generator** is a tool for distributing offline knowledge.
 
 It takes a standard Markdown (`.md`) file and automatically formats, paginates, and rotates it into a single-sheet, 8-page folding zine template.

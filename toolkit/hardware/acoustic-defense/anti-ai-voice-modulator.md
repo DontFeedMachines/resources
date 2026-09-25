@@ -1,12 +1,3 @@
----
-title: "Anti-AI Voice Modulator"
-description: "Hardware inline mic adapter that alters vocal formants to defeat biometric voice identification."
-sidebar:
-  badge: 
-    text: Beta
-    variant: caution
----
-
 The **Anti-AI Voice Modulator** is a hardware-based, inline microphone adapter designed to fundamentally alter your vocal formants. Unlike software modulators (which leave digital artifacts that AI can easily reverse), this device uses analog synthesis to reconstruct your voice in real-time, stripping away biometric markers while retaining human legibility.
 
 ## The Threat Model

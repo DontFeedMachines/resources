@@ -1,10 +1,3 @@
----
-title: "Laser Mic Defeater"
-description: "Piezoelectric window transducers that generate localized acoustic noise to jam laser microphones."
-sidebar:
-  order: 2
----
-
 A **Laser Microphone** works by shining an invisible infrared laser at a window and reading the microscopic vibrations caused by sound waves (speech) inside the room. 
 
 The **Laser Mic Defeater** relies on piezoelectric transducers attached directly to the window glass to induce chaotic vibrations, completely destroying the signal recovered by the laser.

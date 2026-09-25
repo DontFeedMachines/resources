@@ -1,8 +1,3 @@
----
-title: "Gait Alteration Insoles"
-description: "Asymmetric shoe inserts to defeat biometric gait analysis."
----
-
 **Gait Analysis** is a biometric identification method that tracks the unique way you walk (stride length, cadence, hip sway, and foot roll). Unlike facial recognition, gait analysis can identify you from a distance, from behind, and even at low resolutions.
 
 The **Gait Alteration Insoles** are 3D-printed, asymmetric TPU shoe inserts. By subtly forcing one foot to pronate differently than the other, they alter your kinematic signature just enough to fall outside the confidence threshold of the machine learning model, without causing you physical pain or a noticeable limp.

@@ -1,8 +1,3 @@
----
-title: "RFID Zapper"
-description: "Permanently kill passive RFID chips using an EMP pulse."
----
-
 Passive RFID chips are embedded in passports, credit cards, retail clothing tags, and transit cards. You may not want these items constantly broadcasting a unique ID to any scanner you walk past.
 
 The **RFID Zapper** uses the flash capacitor from a disposable camera connected to a copper coil. When triggered, it induces a massive voltage spike in the target RFID chip's antenna, permanently frying the silicon logic gate.

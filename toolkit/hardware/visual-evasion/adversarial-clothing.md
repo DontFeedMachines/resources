@@ -1,8 +1,3 @@
----
-title: "Adversarial Clothing"
-description: "Wearable patterns designed to break YOLO and R-CNN object detection bounding boxes."
----
-
 **Adversarial Clothing** applies specially designed visual patterns (often resembling noisy, abstract gradients) to everyday apparel. These patterns exploit the convolutional layers in object detection algorithms (like YOLO or Faster R-CNN) by creating "false positives" that overwhelm the model, or by breaking the bounding box detection outright so that you are classified as background noise.
 
 ## Effectiveness

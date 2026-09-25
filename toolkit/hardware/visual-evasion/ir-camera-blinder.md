@@ -1,8 +1,3 @@
----
-title: "IR Camera Blinder"
-description: "Wearable array of infrared LEDs designed to overexpose security cameras."
----
-
 The **IR Camera Blinder** is typically embedded into the brim of a baseball cap or the collar of a jacket. It utilizes 850nm or 940nm infrared LEDs pointing outwards. 
 
 Since most security cameras switch to IR-sensitive mode in low light (and lack sophisticated dynamic range processing), the bright IR LEDs will cause the camera's auto-exposure to dramatically reduce the sensor gain. 

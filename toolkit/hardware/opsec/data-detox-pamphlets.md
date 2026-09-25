@@ -1,8 +1,3 @@
----
-title: "Data Detox Pamphlets"
-description: "Printable guides for civilians to reclaim their digital autonomy."
----
-
 The **Data Detox Pamphlets** are a collection of single-sheet, tri-fold PDFs designed to be left in coffee shops, libraries, and community centers. They translate complex opsec concepts into accessible, grandmother-friendly steps.
 
 ## Topics Covered

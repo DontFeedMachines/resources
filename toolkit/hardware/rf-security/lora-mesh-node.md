@@ -1,8 +1,3 @@
----
-title: "LoRa Mesh Node"
-description: "Build an off-grid, decentralized communication node using LoRa."
----
-
 When cellular networks fail, are congested, or compromised (via Stingrays/IMSI Catchers), the **LoRa Mesh Node** provides a resilient, encrypted, low-bandwidth text messaging network.
 
 Using the Meshtastic firmware over 900MHz LoRa radios, you can communicate over miles (or tens of miles with line-of-sight) without relying on any centralized infrastructure. 

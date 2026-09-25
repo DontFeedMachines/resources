@@ -1,12 +1,3 @@
----
-title: "Network Deauth Flipper"
-description: "Pocket-sized tool to disconnect targeted clients from Wi-Fi networks."
-sidebar:
-  badge: 
-    text: Audit
-    variant: danger
----
-
 The **Network Deauth Flipper** leverages the 802.11 management frame vulnerability. Because deauthentication frames are unencrypted in standard WPA2 networks, a malicious actor can spoof the router's MAC address and send a "disconnect" command to any device on the network.
 
 This tool is used by auditors to test the resilience of IoT devices (like wireless security cameras) to denial-of-service attacks, and to force devices to reconnect so the WPA handshake can be captured.

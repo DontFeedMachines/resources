@@ -1,8 +1,3 @@
----
-title: "NFC Skimming Detector"
-description: "Credit card sized device that lights up when exposed to rogue payment terminals."
----
-
 NFC skimmers are increasingly hidden on gas pumps, ATMs, and point-of-sale terminals. These devices emit an interrogating 13.56MHz magnetic field to power up your contactless credit card and read the unencrypted card details.
 
 The **NFC Skimming Detector** is a credit-card-sized PCB consisting only of a tuned copper coil antenna and an LED. It requires no battery. 

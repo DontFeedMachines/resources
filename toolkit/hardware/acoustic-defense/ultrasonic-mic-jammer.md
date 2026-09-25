@@ -1,8 +1,3 @@
----
-title: "Ultrasonic Mic Jammer"
-description: "Array of ultrasonic transducers designed to overload smartphone MEMS microphones."
----
-
 Most modern smart speakers and smartphones use MEMS (Micro-Electro-Mechanical Systems) microphones. These microphones have a hidden vulnerability: they are highly sensitive to ultrasonic frequencies (above 20kHz) that humans cannot hear.
 
 By generating loud, chaotic ultrasonic noise, this jammer causes the MEMS membrane to distort non-linearly, effectively bleeding the ultrasonic noise down into the audible spectrum *inside the microphone's own circuitry*. To the device, the room sounds like deafening static; to you, the room sounds completely silent.

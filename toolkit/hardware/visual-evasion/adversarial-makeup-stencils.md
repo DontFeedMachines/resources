@@ -1,12 +1,3 @@
----
-title: "Adversarial Makeup Stencils"
-description: "Facial geometries that disrupt facial recognition landmarks."
-sidebar:
-  badge: 
-    text: New
-    variant: success
----
-
 Facial recognition systems (like Clearview AI or local police deployments) rely on specific facial landmarks: the distance between the eyes, the bridge of the nose, and the jawline. **Adversarial Makeup (CV Dazzle)** uses asymmetrical, high-contrast makeup and hair styling to obscure these features.
 
 This repository provides 3D-printable stencils to apply precise adversarial geometries quickly and consistently.

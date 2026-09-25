@@ -1,8 +1,3 @@
----
-title: "Smart-Dust Sweeper"
-description: "A specialized electrostatic broom/vacuum designed to collect and neutralize micro-scale IoT sensors."
----
-
 # Overview
 
 The **Smart-Dust Sweeper** is a specialized electrostatic broom and vacuum mechanism designed to collect and neutralize micro-scale IoT sensors ("smart dust") that may have been deployed in your environment.

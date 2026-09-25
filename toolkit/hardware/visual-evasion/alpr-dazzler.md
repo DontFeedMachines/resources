@@ -1,8 +1,3 @@
----
-title: "ALPR Dazzler"
-description: "License plate frame equipped with infrared LEDs to blind Automated License Plate Readers."
----
-
 Automated License Plate Readers (ALPRs) are mounted on police cruisers, toll booths, and street lights, logging the location of every vehicle that passes. Most ALPRs operate using near-infrared (NIR) cameras to read reflective plates day and night.
 
 The **ALPR Dazzler** is a discrete license plate frame that emits high-intensity NIR light. To the human eye, it looks like a standard black frame. To an ALPR camera, it looks like a blinding sun flare that washes out the entire license plate.

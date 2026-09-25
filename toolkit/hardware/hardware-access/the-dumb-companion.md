@@ -1,8 +1,3 @@
----
-title: "The 'Dumb' Companion"
-description: "An e-ink tamagotchi-like device that rewards the user for spending time away from screens and network coverage using a localized Faraday sensor."
----
-
 # Overview
 
 **The 'Dumb' Companion** is an e-ink, tamagotchi-like device designed to incentivize disconnection. It rewards the user for spending time away from screens and network coverage using a localized Faraday sensor.
