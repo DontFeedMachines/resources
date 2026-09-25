@@ -1,32 +1,22 @@
 ---
-title: don't feed machines // wiki
-description: build & info wiki for counter-surveillance hardware.
-template: splash
-hero:
-  tagline: practical counter-surveillance and privacy hardware builds.
-  image:
-    file: ../assets/logos/dfm_icon.png
-  actions:
-    - text: enter the toolkit
-      link: /toolkit/
-      icon: right-arrow
-      variant: primary
+title: How-To Guides
+description: Step-by-step instructions for building, deploying, and maintaining counter-surveillance hardware.
 ---
 
-:::cardgrid
-:::card{title="hardware access" icon="setting"}
-tools to physically interface with and audit devices.
-:::
-:::card{title="rf security" icon="signal"}
-defenses against wireless tracking and intrusion.
-:::
-:::card{title="acoustic defense" icon="error"}
-systems to mask, jam, and spoof microphone arrays.
-:::
-:::card{title="visual evasion" icon="external"}
-methods to bypass facial recognition and alpr.
-:::
-:::card{title="opsec" icon="document"}
-operational security guides and tactics.
-:::
-:::
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Welcome to the How-To section. Here you will find practical, step-by-step guides on assembling hardware, flashing firmware, and configuring your devices for maximum operational security.
+
+## Hardware Assembly
+
+<CardGrid>
+  <LinkCard title="Soldering Basics for DFM Projects" description="A beginner's guide to safely and effectively soldering custom PCBs." href="/how-to/soldering-basics/" />
+  <LinkCard title="Flashing Custom Firmware" description="How to flash open-source firmware onto microcontrollers like ESP32 and RP2040." href="/how-to/flashing-firmware/" />
+</CardGrid>
+
+## Operational Security
+
+<CardGrid>
+  <LinkCard title="Deploying an Acoustic Defeater" description="Best practices for positioning and tuning ultrasonic microphone jammers." href="/how-to/deploying-acoustic-defeaters/" />
+  <LinkCard title="Conducting an RF Sweep" description="How to use SDRs and handheld sweepers to locate hidden trackers." href="/how-to/conducting-rf-sweeps/" />
+</CardGrid>
