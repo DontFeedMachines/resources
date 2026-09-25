@@ -6,7 +6,7 @@ hero:
   tagline: Reclaim your autonomy with open-source tools & readily available info.
   actions:
     - text: Get Started
-      link: /projects/hardware-access/smart-dust-sweeper/
+      link: /projects/
       icon: right-arrow
       variant: primary
 ---
