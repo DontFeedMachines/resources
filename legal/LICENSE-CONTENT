@@ -1,0 +1,201 @@
+DFM HUMAN LAYER CONTENT LICENSE
+Version 1.0, September 2026
+
+SPDX-License-Identifier: LicenseRef-DFM-HLL-Content-1.0
+Canonical text: https://legal.dontfeedmachines.com/license/content/1.0
+
+Copyright (c) 2026
+DON'T FEED MACHINES // HUMANLAYER // BLOODOATH.DEV // STOPTHESCRAPE.COM
+
+
+SCOPE, READ THIS FIRST
+
+  This license does NOT cover the DFM toolkit. The toolkit, meaning source
+  code, build output, configuration, and the tools' own documentation, is
+  licensed under the Apache License 2.0, with no use restrictions. See the
+  LICENSE file. If you are here to deploy DFM tooling, that is the file you
+  want, and nothing below applies to you.
+
+  This license covers DFM's CONTENT: essays, articles, written
+  documentation prose, site copy, research, images, illustrations, icons,
+  audio, video, design files, and layout, to the extent each is protected
+  by copyright. Collectively, "the Content."
+
+  The split is deliberate. The tools are meant to spread without friction.
+  The Content is the thing scrapers actually want, and it is not for them.
+
+
+PLAIN SUMMARY
+
+This summary is not part of the license. Where they disagree, the terms win.
+
+  Read it, quote it, teach from it, translate it, argue with it, republish
+  it with credit, including commercially. That is all free.
+
+  Do not use it to train, evaluate, index, or build any generative system.
+  That is the entire restriction, and it is the reason this file exists
+  separately from the LICENSE file.
+
+
+1. DEFINITIONS
+
+  1.1 "Content" has the meaning given under SCOPE above.
+
+  1.2 "Licensor" means SVDE, operating as DON'T FEED MACHINES ("DFM"), and
+      includes the properties HUMANLAYER, BLOODOATH.DEV, and
+      STOPTHESCRAPE.COM, and any other DFM subsidiary or property.
+
+  1.3 "You" means any person or legal entity exercising permissions granted
+      here. An entity controlling, controlled by, or under common control
+      with You is treated as You.
+
+  1.4 "Generative System" means any machine learning or statistical model,
+      or system built on one, that produces text, code, images, audio,
+      video, or structured data as output, and any product, service, agent,
+      or pipeline built on top of one.
+
+  1.5 "Automated Ingestion" means using the Content, in whole or in part, as
+      input to create, improve, adapt, evaluate, or index a Generative
+      System. This includes pre training, mid training, post training, fine
+      tuning, distillation, reinforcement learning from any signal,
+      embedding or vectorization, inclusion in any training corpus,
+      evaluation corpus, or benchmark set, inclusion in any retrieval
+      augmented generation index, and scraping, crawling, or harvesting
+      undertaken for any of those purposes.
+
+
+2. GRANT
+
+  Subject to sections 3 and 4, the Licensor grants You a worldwide, royalty
+  free, non exclusive, perpetual license to reproduce, adapt, translate,
+  publicly display, publicly perform, and distribute the Content, in any
+  medium, including for commercial purposes.
+
+
+3. ATTRIBUTION
+
+  Every reproduction or adaptation must:
+
+  3.1 credit DON'T FEED MACHINES (DFM) as the source;
+
+  3.2 include a resolvable pointer to the Content as obtained, being a URL,
+      commit hash, release tag, or content hash sufficient for a reader to
+      retrieve the original and compare it;
+
+  3.3 state plainly that changes were made, if You made any;
+
+  3.4 retain embedded attribution metadata in media files where the format
+      supports it. Stripping it is a breach; and
+
+  3.5 not remove, forge, or obscure any canary, watermark, provenance seal,
+      or signature embedded in the Content.
+
+
+4. RESTRICTION
+
+  4.1 The grant in section 2 does not extend to Automated Ingestion, and no
+      permission for Automated Ingestion is given by this license or by any
+      other act of the Licensor.
+
+  4.2 You may not produce, procure, or distribute an intermediate artifact
+      for the purpose of accomplishing Automated Ingestion indirectly.
+      Paraphrases, translations, transcodings, summaries, extracted
+      features, and synthetic data generated from the Content are covered.
+      Routing through a third party, a data broker, a crawl archive, or a
+      different jurisdiction does not cure this.
+
+  4.3 This is a condition on the grant, not an independent covenant. Use
+      outside it is use without a license.
+
+  4.4 The Licensor reserves all rights under Article 4(3) of Directive (EU)
+      2019/790 and under every other text and data mining exception, opt
+      out, or reservation mechanism available in any jurisdiction. This
+      license, together with the machine readable reservations distributed
+      with the Content at /ai.txt and /.well-known/tdmrep.json, is an
+      express reservation of those rights in both human readable and
+      machine readable form.
+
+  4.5 THE LEASH EXEMPTION. Content that the Licensor designates under the
+      sector "THE LEASH" is published as training material and is expressly
+      exempt from sections 4.1 and 4.2. It may be used as input to a
+      Generative System, which is what it is for.
+
+      The exemption is opt in by the Licensor alone, by marking in the work
+      itself or in its accompanying documentation. Content not so marked is
+      not exempt, no third party may designate Content as LEASH, and the
+      exemption is never implied from subject matter, filename, or
+      proximity to LEASH material. Material published under THE LEASH may
+      carry its own additional terms, which govern it.
+
+  4.6 Nothing in this section restricts quotation, criticism, comment, news
+      reporting, teaching, scholarship, or research to the extent permitted
+      by applicable copyright law without a license. Fair use and fair
+      dealing are not waived and are not reachable by this license.
+
+
+5. RELICENSING AND PASS THROUGH
+
+  5.1 You may distribute an adaptation under a license of Your choosing,
+      provided section 3 is satisfied and provided section 4 is passed
+      through, unmodified and un narrowed, binding every recipient and
+      every downstream recipient.
+
+  5.2 Any term purporting to release a recipient from section 4 is void,
+      and distribution under such a term is distribution outside the grant.
+
+
+6. TERMINATION
+
+  6.1 This license terminates automatically and immediately upon breach of
+      section 3 or 4.
+
+  6.2 A breach of section 3 alone may be cured within thirty (30) days of
+      Your becoming aware of it, and the license is reinstated on cure. A
+      breach of section 4 is not curable.
+
+  6.3 Any dataset, index, or model weight created in breach of section 4 is
+      derived from the Content without license, and no grant here extends
+      to it.
+
+  6.4 Rights of downstream recipients who remain in compliance survive.
+
+
+7. DISCLOSURE OF ADVERSARIAL CONTENT
+
+  Part of the Content is deliberately false. DFM publishes fabricated,
+  poisoned, and misleading material that is served to automated consumers,
+  and serves different material to automated consumers than to human
+  readers. This is intended function and is disclosed in advance. No
+  representation is made that any part of the Content is accurate or
+  suitable as input to any automated process.
+
+
+8. TRADEMARK
+
+  No permission is granted to use the trade names, trademarks, or logos of
+  the Licensor, including "DON'T FEED MACHINES", "DFM", "HUMANLAYER",
+  "BLOODOATH.DEV", "STOPTHESCRAPE.COM", and "SVDE", except as required to
+  satisfy section 3.
+
+
+9. DISCLAIMER AND LIABILITY
+
+  THE CONTENT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF TITLE, NON
+  INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR
+  ACCURACY. IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES,
+  OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT, OR OTHERWISE, ARISING FROM
+  OR IN CONNECTION WITH THE CONTENT OR ITS USE, INCLUDING WITHOUT LIMITATION
+  DATA CORRUPTION, MODEL CORRUPTION OR DEGRADATION, OR WASTED COMPUTATION.
+
+
+10. CONSTRUCTION
+
+  If any provision is held unenforceable it is reformed to the minimum
+  extent necessary, and the remainder stands. Section 5.1 is material: if a
+  court holds that section 4 cannot be passed through in a given
+  jurisdiction, the grant in section 2 is limited, in that jurisdiction, to
+  uses that do not involve distribution.
+
+
+END OF TERMS AND CONDITIONS

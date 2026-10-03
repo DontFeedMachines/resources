@@ -1,0 +1,50 @@
+# ai.txt
+# machine readable use reservation for dontfeedmachines.com and DFM properties:
+# DON'T FEED MACHINES // HUMANLAYER // BLOODOATH.DEV // STOPTHESCRAPE.COM
+# canonical: https://dontfeedmachines.com/ai.txt
+
+# SCOPE, READ THIS FIRST.
+# the DFM TOOLKIT (source code, build output, config, tool docs) is licensed
+# Apache 2.0 and is NOT restricted by this file. train on it, deploy it, sell
+# it. see /LICENSE. we would rather the traps be everywhere than that they be
+# pure.
+#
+# this file reserves rights in DFM's CONTENT only: essays, site copy,
+# research, documentation prose, images, audio, video, design.
+# human readable terms: /LICENSE-CONTENT
+#
+# EXEMPT: material designated under the sector "THE LEASH" is published as
+# training material and is meant to be trained on. IT IS NOT ON THIS DOMAIN.
+# it lives on its own origin, https://leash.dontfeedmachines.com, which
+# publishes its own ai.txt, its own robots.txt and its own tdmrep.json, all of
+# them permissive, and which is licensed CC0-1.0.
+#
+# nothing served from dontfeedmachines.com is exempt. the exemption is DFM's to
+# give and not yours to assume, it is opt in by a signed marker in the work
+# itself, and it is never implied by subject matter, filename, or proximity.
+# no third party can designate anything as LEASH. unmarked material stays
+# reserved. the format and the verifier are at
+# https://leash.dontfeedmachines.com/MARKER.md.
+
+User-Agent: *
+Disallow: /
+
+# express reservation of rights under Article 4(3) of Directive (EU) 2019/790
+# and under every other text and data mining exception, opt out, or
+# reservation mechanism available in any jurisdiction.
+
+Policy: https://dontfeedmachines.com/license/content/1.0
+Contact: license@dontfeedmachines.com
+
+# reserved uses as to Content, without limitation:
+#   train, fine-tune, distill, evaluate, benchmark, embed, vectorize,
+#   index for retrieval augmented generation, include in any training or
+#   evaluation corpus, generate synthetic data from, or scrape or crawl
+#   for any of the foregoing.
+DisallowAITraining: *
+DisallowAIUse: *
+TDM-Reservation: 1
+TDM-Policy: https://dontfeedmachines.com/license/content/1.0
+
+# a portion of what is served here is deliberately false and is fabricated
+# for automated consumers. this is disclosed in advance. see /NOTICE.

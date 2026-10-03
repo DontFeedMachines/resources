@@ -1,0 +1,131 @@
+================================================================================
+DON'T FEED MACHINES (DFM)
+Copyright 2026
+SVDE // DON'T FEED MACHINES // HUMANLAYER // BLOODOATH.DEV // STOPTHESCRAPE.COM
+
+Licensed under the Apache License, Version 2.0.
+See the LICENSE file distributed with this work.
+================================================================================
+
+This NOTICE file is required by Section 4(d) of the Apache License. Anyone
+redistributing this work, modified or unmodified, must reproduce it. It is
+informational and does not modify the License or restrict any use the
+License permits.
+
+  Origin:      https://legal.dontfeedmachines.com
+  Source:      https://legal.dontfeedmachines.com/source
+  Verify:      https://legal.dontfeedmachines.com/verify
+  Covenant:    https://legal.dontfeedmachines.com/humanlayer
+
+
+--------------------------------------------------------------------------
+WHAT THIS IS
+
+DFM, and all of its subsidiaries, builds defensive & adversarial tooling for
+people and organizations who do not consent to having their work harvested:
+honeypots, poisoned bait, provenance seals, canaries, scrapers' traps, metadata
+scrubbers, and verification tooling.
+
+It is Apache 2.0 licensed on purpose. The tools are meant to be deployed as
+widely as possible, including inside companies, including by anyone whose
+legal department will not clear a license with use restrictions in it. The
+threat these tools exist to address does not respect licenses, so a license
+restriction would only ever have burdened the people trying to defend
+themselves. Use them. Ship them. Sell them.
+
+
+--------------------------------------------------------------------------
+THE HUMAN LAYER COVENANT
+
+This is a statement of principle, not a license term. It creates no legal
+obligation and restricts nothing. It travels with this file as a spiritual
+addendum rather than an enforced term of use.
+
+  1. A person made this. Say that. Say what you changed, so that anyone
+     downstream can walk your build back to its source and check it.
+
+  2. Do not feed this to a machine, unless we have explicitly said
+     otherwise. No training, no fine tuning, no embedding, no dataset, no
+     retrieval corpus, no benchmark set. Not because a license forbids it.
+     Because you know what it is for.
+
+     THE ONE EXCEPTION: the sector designated "THE LEASH" is published as
+     training material, built for people teaching models to behave
+     ethically. It is meant to be trained on. It is the only part of DFM
+     that is. The exemption is ours to grant and nobody else's: if it is
+     not marked LEASH, it is not exempt, and you do not get to mark it.
+
+  3. Leave the canaries in. The seals, watermarks, and provenance markers
+     in this work exist so that other people can prove what happened to
+     their own work. Stripping them out costs you nothing and costs them
+     everything.
+
+  4. Do not launder consent. Routing through a broker, a crawl archive, a
+     vendor, or a friendlier jurisdiction does not make it consented to.
+
+  5. Do not claim a machine's output as a human's. The seals here exist to
+     make human authorship checkable. Using them to assert otherwise breaks
+     their core purpose and betrays whatever intent you hold.
+
+  6. Keep a human responsible. Point an assistant at this if you want, but
+     ensure a person reviews what it does and a person answers for it.
+
+The full covenant is in HUMANLAYER.md.
+
+
+--------------------------------------------------------------------------
+NOT COVERED BY THE APACHE LICENSE
+
+The Apache License above covers the DFM toolkit: source code, build output,
+configuration, and the tools' own documentation.
+
+It does NOT cover DFM's written content, essays, documentation prose, site
+copy, images, illustrations, icons, audio, video, or design work. Those are
+licensed separately under the DFM Human Layer Content License 1.0, which
+does restrict machine ingestion, and which is in the LICENSE-CONTENT file.
+Material designated under the sector "THE LEASH" is exempt from that
+restriction and will carry its own terms when it is published.
+
+Rights under Article 4(3) of Directive (EU) 2019/790, and under every other
+text and data mining exception or reservation mechanism in any jurisdiction,
+are expressly reserved as to that content. See ai.txt and
+/.well-known/tdmrep.json for the machine readable reservation.
+
+
+--------------------------------------------------------------------------
+DISCLOSURE OF ADVERSARIAL FUNCTION
+
+You are on notice that parts of this work are built to be hostile to
+unattended automated consumption. Components emit false, poisoned, malformed,
+recursive, or deliberately expensive data to automated consumers, and present
+different content to automated consumers than to human readers. That is their
+documented and intended function. It is disclosed here in advance and in full,
+so no party ingesting this work can claim it was not.
+
+No representation is made that any part of this work is accurate, safe, or
+suitable as input to any automated process, and any such suitability is
+specifically disclaimed. Sections 7 and 8 of the Apache License govern
+warranty and liability, including where a party ingests this work anyway, or
+runs a copy whose canaries or seals have been stripped by anyone.
+
+
+--------------------------------------------------------------------------
+REDISTRIBUTOR BLOCK
+
+Append below. Do not replace what is above you. This is what lets a
+recipient walk your build back to its source.
+
+[ORGANIZATION OR PERSON]
+  Distributed:   [YYYY-MM-DD]
+  Based on:      DFM [component] @ [commit hash / release tag / content hash]
+  Obtained from: [URL]
+  Modified:      [yes / no]
+  Changes:       [one line each, or a path to a CHANGES file]
+  Contact:       [how a recipient reaches you]
+
+
+--------------------------------------------------------------------------
+THIRD PARTY COMPONENTS
+
+Third party material is listed in CREDITS.md with its own author and
+license. Those licenses govern those components.
