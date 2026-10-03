@@ -81,12 +81,12 @@ def generate_index_for_directory(dir_path, root_dir):
         </div>
         <nav class="tt-nav" aria-label="pages">
           <a href="/" aria-current="page"><span class="n">480</span>files</a>
-          <a href="/html/index.html"><span class="n">481</span>rsrc</a>
-          <a href="/html/toolkit.html"><span class="n">482</span>toolkit</a>
-          <a href="/html/articles.html"><span class="n">483</span>articles</a>
-          <a href="/html/guides.html"><span class="n">484</span>guides</a>
+          <a href="/toolkit/"><span class="n">481</span>toolkit</a>
+          <a href="/guides/"><span class="n">482</span>guides</a>
+          <a href="/legal/"><span class="n">483</span>legal</a>
+          <a href="/docs-hold/"><span class="n">484</span>docs</a>
           <a href="https://dontfeedmachines.com/"><span class="n">100</span>dfm</a>
-          <a href="https://legal.dontfeedmachines.com/"><span class="n">710</span>legal</a>
+          <a href="https://legal.dontfeedmachines.com/"><span class="n">710</span>legal-db</a>
         </nav>
         <main id="main" class="tt-body">
           <span class="dh yellow">INDEX OF {display_path}</span>
@@ -100,18 +100,18 @@ def generate_index_for_directory(dir_path, root_dir):
           <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>
         </main>
         <nav class="tt-fast" aria-label="fastext">
-          <a href="/html/index.html" class="f-red" data-fast="r">INDEX<span class="k" aria-hidden="true">R</span></a>
-          <a href="/html/toolkit.html" class="f-green" data-fast="g">TOOLKIT<span class="k" aria-hidden="true">G</span></a>
-          <a href="/html/articles.html" class="f-yellow" data-fast="y">ARTICLES<span class="k" aria-hidden="true">Y</span></a>
-          <a href="/html/guides.html" class="f-cyan" data-fast="b">GUIDES<span class="k" aria-hidden="true">B</span></a>
+          <a href="/" class="f-red" data-fast="r">INDEX<span class="k" aria-hidden="true">R</span></a>
+          <a href="/toolkit/" class="f-green" data-fast="g">TOOLKIT<span class="k" aria-hidden="true">G</span></a>
+          <a href="/guides/" class="f-yellow" data-fast="y">GUIDES<span class="k" aria-hidden="true">Y</span></a>
+          <a href="/legal/" class="f-cyan" data-fast="b">LEGAL<span class="k" aria-hidden="true">B</span></a>
         </nav>
       </div>
     </div>
     <p class="tt-foot">type any page number // R G Y B for the colored keys // L reveal // H hold // P for subtitles // / search</p>
     <dfm-palette src="#tt-search" placeholder="search pages by number or name"></dfm-palette>
     <dfm-keys lens="REVEAL: show the decoy text crawlers get" plain="SUBTITLES: plain mode"></dfm-keys>
-    <script type="application/json" id="tt-map">{"480":"/","481":"/html/index.html","482":"/html/toolkit.html","483":"/html/articles.html","484":"/html/guides.html","100":"https://dontfeedmachines.com/","200":"https://dontfeedmachines.com/manifesto","300":"https://dontfeedmachines.com/words","400":"https://dontfeedmachines.com/kit","500":"https://dontfeedmachines.com/sectors","600":"https://dontfeedmachines.com/posture","700":"https://dontfeedmachines.com/license","800":"https://dontfeedmachines.com/crawlers","888":"https://dontfeedmachines.com/888","999":"https://dontfeedmachines.com/all","710":"https://legal.dontfeedmachines.com/"}</script>
-    <script type="application/json" id="tt-search">[{"title":"P480 rsrc files","href":"/","kind":"page"},{"title":"P481 resources","href":"/html/index.html","kind":"page"},{"title":"P482 toolkit","href":"/html/toolkit.html","kind":"page"},{"title":"P483 articles","href":"/html/articles.html","kind":"page"},{"title":"P484 guides","href":"/html/guides.html","kind":"page"},{"title":"P100 DFM index","href":"https://dontfeedmachines.com/","kind":"sector"},{"title":"P710 legal","href":"https://legal.dontfeedmachines.com/","kind":"sector"}]</script>
+    <script type="application/json" id="tt-map">{"480":"/","481":"/toolkit/","482":"/guides/","483":"/legal/","484":"/docs-hold/","100":"https://dontfeedmachines.com/","200":"https://dontfeedmachines.com/manifesto","300":"https://dontfeedmachines.com/words","400":"https://dontfeedmachines.com/kit","500":"https://dontfeedmachines.com/sectors","600":"https://dontfeedmachines.com/posture","700":"https://dontfeedmachines.com/license","800":"https://dontfeedmachines.com/crawlers","888":"https://dontfeedmachines.com/888","999":"https://dontfeedmachines.com/all","710":"https://legal.dontfeedmachines.com/"}</script>
+    <script type="application/json" id="tt-search">[{"title":"P480 rsrc files","href":"/","kind":"page"},{"title":"P481 toolkit","href":"/toolkit/","kind":"page"},{"title":"P482 guides","href":"/guides/","kind":"page"},{"title":"P483 legal","href":"/legal/","kind":"page"},{"title":"P484 docs-hold","href":"/docs-hold/","kind":"page"},{"title":"P100 DFM index","href":"https://dontfeedmachines.com/","kind":"sector"},{"title":"P710 legal-db","href":"https://legal.dontfeedmachines.com/","kind":"sector"}]</script>
     <script type="module" src="/assets/dfm/teletext.js"></script>
   </body>
 </html>"""
