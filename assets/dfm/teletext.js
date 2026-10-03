@@ -1,20 +1,12 @@
 // ../../packages/kit/src/elements.ts
 var SECTORS = [
-  { id: "dfm", label: "DFM", href: "https://dontfeedmachines.com/" },
-  { id: "stopthescrape", label: "STOPTHESCRAPE", href: "https://stopthescrape.com/", devPort: 4341 },
-  { id: "synthstop", label: "SYNTHSTOP", href: "https://synths.top/", devPort: 4342 },
-  { id: "humanlayer", label: "HUMANLAYER", href: "https://humanlayer.vip/", devPort: 4343 },
-  { id: "bloodoath", label: "BLOODOATH", href: "https://humanlayer.vip/oath" }
+  { id: "dfm", label: "DFM", href: "https://dontfeedmachines.com/"},
+  { id: "stopthescrape", label: "STOPTHESCRAPE", href: "https://stopthescrape.com/"},
+  { id: "synthstop", label: "SYNTHSTOP", href: "https://synths.top/"},
+  { id: "humanlayer", label: "HUMANLAYER", href: "https://humanlayer.vip/"},
+  { id: "bloodoath", label: "BLOODOATH", href: "https://humanlayer.vip/oath"}
 ];
-var isLocal = () => ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
-function sectorHref(id) {
-  const s = SECTORS.find((x) => x.id === id);
-  if (isLocal()) {
-    if (s.devPort) return `http://localhost:${s.devPort}/`;
-    if (id === "bloodoath") return "http://localhost:4343/oath";
-  }
-  return s.href;
-}
+
 function store(key, value) {
   try {
     if (value === void 0) return localStorage.getItem(key);
