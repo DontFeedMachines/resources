@@ -84,7 +84,6 @@ def generate_index_for_directory(dir_path, root_dir):
           <a href="/toolkit/"><span class="n">481</span>toolkit</a>
           <a href="/guides/"><span class="n">482</span>guides</a>
           <a href="/legal/"><span class="n">483</span>legal</a>
-          <a href="/docs-hold/"><span class="n">484</span>docs</a>
           <a href="https://dontfeedmachines.com/"><span class="n">100</span>dfm</a>
           <a href="https://legal.dontfeedmachines.com/"><span class="n">710</span>legal-db</a>
         </nav>
