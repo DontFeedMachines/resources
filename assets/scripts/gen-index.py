@@ -1,10 +1,10 @@
 import os
 import subprocess
 import math
+import html
 
 def get_git_mtime(filepath):
     try:
-        # grab git src info for last modified date
         result = subprocess.run(
             ['git', 'log', '-1', '--format=%cd', '--date=format:%Y-%m-%d %H:%M', '--', filepath],
             capture_output=True, text=True, check=True
@@ -24,20 +24,13 @@ def format_size(size_in_bytes):
     s_str = str(s).replace(".0", "")
     return f"{s_str}{size_name[i]}"
 
-def generate_index_for_directory(dir_path, root_dir):
-    rel_path = os.path.relpath(dir_path, root_dir)
-    if rel_path == '.':
-        display_path = "/RSRC"
-    else:
-        display_path = f"/RSRC/{rel_path}"
-
-    html_template = """<!doctype html>
+HTML_HEADER = """<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>P480 INDEX OF {display_path} // DFM</title>
-    <meta name="description" content="DFM resources: every file in the archive." />
+    <title>P480 {page_title} // DFM</title>
+    <meta name="description" content="DFM resources archive." />
     <meta name="robots" content="noai, noimageai" />
     <meta name="tdm-reservation" content="1" />
     <link rel="stylesheet" href="/assets/dfm/dfm-static.css" />
@@ -51,6 +44,7 @@ def generate_index_for_directory(dir_path, root_dir):
       .ls .right { text-align: right; }
       .ls-wrap { overflow-x: auto; }
       address { color: var(--tt-green); font-style: normal; font-size: 0.6em; margin-top: 1em; }
+      .tt-content { white-space: pre-wrap; font-family: 'Courier New', Courier, monospace; color: var(--tt-white); padding: 1em 0; font-size: 0.8em; line-height: 1.4; }
     </style>
     <script>
       (function () {
@@ -84,20 +78,13 @@ def generate_index_for_directory(dir_path, root_dir):
           <a href="/toolkit/"><span class="n">481</span>toolkit</a>
           <a href="/guides/"><span class="n">482</span>guides</a>
           <a href="/legal/"><span class="n">483</span>legal</a>
+          <a href="/docs-hold/"><span class="n">484</span>docs</a>
           <a href="https://dontfeedmachines.com/"><span class="n">100</span>dfm</a>
           <a href="https://legal.dontfeedmachines.com/"><span class="n">710</span>legal-db</a>
         </nav>
-        <main id="main" class="tt-body">
-          <span class="dh yellow">INDEX OF {display_path}</span>
-          <div class="ls-wrap">
-            <table class="ls">
-              <tr><th>Name</th><th>Last modified</th><th class="right">Size</th><th>Description</th></tr>
-{parent_link}
-{rows}
-            </table>
-          </div>
-          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>
-        </main>
+        <main id="main" class="tt-body">"""
+
+HTML_FOOTER = """        </main>
         <nav class="tt-fast" aria-label="fastext">
           <a href="/" class="f-red" data-fast="r">INDEX<span class="k" aria-hidden="true">R</span></a>
           <a href="/toolkit/" class="f-green" data-fast="g">TOOLKIT<span class="k" aria-hidden="true">G</span></a>
@@ -115,13 +102,21 @@ def generate_index_for_directory(dir_path, root_dir):
   </body>
 </html>"""
 
+def generate_index_for_directory(dir_path, root_dir):
+    rel_path = os.path.relpath(dir_path, root_dir)
+    if rel_path == '.':
+        display_path = "/RSRC"
+    else:
+        display_path = f"/RSRC/{rel_path}"
+
     entries = os.listdir(dir_path)
     entries.sort()
     
-    ignored = {'.git', '.github', 'assets', 'index.html', 'CNAME', '.DS_Store'}
+    ignored = {'.git', '.github', 'assets', 'index.html', 'CNAME', '.DS_Store', '.nojekyll'}
     
     dirs = [e for e in entries if os.path.isdir(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.')]
-    files = [e for e in entries if os.path.isfile(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.')]
+    # Exclude the generated .html viewer files from the listing itself
+    files = [e for e in entries if os.path.isfile(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.') and not e.endswith('.html')]
     
     rows = []
     
@@ -134,18 +129,58 @@ def generate_index_for_directory(dir_path, root_dir):
         full_f = os.path.join(dir_path, f)
         mtime = get_git_mtime(full_f)
         size = format_size(os.path.getsize(full_f))
-        rows.append(f'              <tr><td><a href="{f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
+        
+        # Check if it's a text file or extensionless file
+        ext = os.path.splitext(f)[1].lower()
+        is_text = ext in {'.md', '.txt', '.csv', '.json', '.yml', '.yaml', '.xml', ''}
+        
+        if is_text:
+            # Generate a styled HTML viewer for this file
+            try:
+                with open(full_f, 'r', encoding='utf-8', errors='replace') as raw_f:
+                    content = raw_f.read()
+                escaped_content = html.escape(content)
+                
+                viewer_title = f"VIEW {display_path}/{f}"
+                viewer_html = HTML_HEADER.replace("{page_title}", viewer_title)
+                viewer_html += f'\\n          <span class="dh yellow">FILE: {display_path}/{f}</span>'
+                viewer_html += f'\\n          <div class="tt-content">{escaped_content}</div>'
+                viewer_html += f'\\n          <br/><a href="./" style="color: var(--tt-cyan);">&lt;&lt; BACK TO DIRECTORY</a>'
+                viewer_html += '\\n          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>'
+                viewer_html += '\\n' + HTML_FOOTER
+                
+                # Save the viewer as f.html
+                with open(full_f + '.html', 'w', encoding='utf-8') as vf:
+                    vf.write(viewer_html)
+                
+                # Link to the generated HTML viewer, but display the original filename
+                rows.append(f'              <tr><td><a href="{f}.html">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
+            except Exception as e:
+                # Fallback to direct link if something goes wrong
+                rows.append(f'              <tr><td><a href="{f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
+        else:
+            # Normal direct link for binaries/images
+            rows.append(f'              <tr><td><a href="{f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
 
     parent_link = '              <tr><td><a href="../">Parent Directory</a></td><td>&nbsp;</td><td class="right">  - </td><td>&nbsp;</td></tr>'
     if rel_path == '.':
         parent_link = ''
 
+    # Build the directory index.html
+    index_html = HTML_HEADER.replace("{page_title}", f"INDEX OF {display_path}")
+    index_html += f'\\n          <span class="dh yellow">INDEX OF {display_path}</span>'
+    index_html += '\\n          <div class="ls-wrap">\\n            <table class="ls">'
+    index_html += '\\n              <tr><th>Name</th><th>Last modified</th><th class="right">Size</th><th>Description</th></tr>\\n'
+    if parent_link:
+        index_html += parent_link + '\\n'
+    index_html += '\\n'.join(rows)
+    index_html += '\\n            </table>\\n          </div>'
+    index_html += '\\n          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>'
+    index_html += '\\n' + HTML_FOOTER
+
     index_path = os.path.join(dir_path, 'index.html')
-    with open(index_path, 'w', encoding='utf-8') as f:
-        final_html = html_template.replace('{display_path}', display_path)
-        final_html = final_html.replace('{parent_link}', parent_link)
-        final_html = final_html.replace('{rows}', '\n'.join(rows))
-        f.write(final_html)
+    with open(index_path, 'w', encoding='utf-8') as f_idx:
+        f_idx.write(index_html)
 
 def main():
     root_dir = '.'
