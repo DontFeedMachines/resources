@@ -1,7 +1,6 @@
 import os
 import subprocess
 import math
-import html
 
 def get_git_mtime(filepath):
     try:
@@ -16,8 +15,8 @@ def get_git_mtime(filepath):
 
 def format_size(size_in_bytes):
     if size_in_bytes == 0:
-        return "0"
-    size_name = (" ", "K", "M", "G", "T")
+        return "0B"
+    size_name = ("B", "K", "M", "G", "T")
     i = int(math.floor(math.log(size_in_bytes, 1024)))
     p = math.pow(1024, i)
     s = round(size_in_bytes / p, 1)
@@ -44,7 +43,21 @@ HTML_HEADER = """<!doctype html>
       .ls .right { text-align: right; }
       .ls-wrap { overflow-x: auto; }
       address { color: var(--tt-green); font-style: normal; font-size: 0.6em; margin-top: 1em; }
-      .tt-content { white-space: pre-wrap; font-family: 'Courier New', Courier, monospace; color: var(--tt-white); padding: 1em 0; font-size: 0.8em; line-height: 1.4; }
+      
+      /* Viewer Styles */
+      .tt-content { font-family: 'Spline Sans Mono', 'Courier New', monospace; color: var(--tt-white); padding: 1em 0; font-size: 0.8em; line-height: 1.4; }
+      .tt-content-raw { white-space: pre-wrap; }
+      .tt-content-md h1, .tt-content-md h2, .tt-content-md h3 { color: var(--tt-magenta); font-weight: normal; margin-top: 1.5em; }
+      .tt-content-md h1 { border-bottom: 1px solid var(--tt-magenta); padding-bottom: 0.2em; }
+      .tt-content-md a { color: var(--tt-cyan); text-decoration: none; border-bottom: 1px dashed var(--tt-cyan); }
+      .tt-content-md p { margin-bottom: 1em; }
+      .tt-content-md code { background: rgba(255,255,255,0.1); padding: 0.1em 0.3em; color: var(--tt-yellow); }
+      .tt-content-md pre { background: rgba(0,0,0,0.5); padding: 1em; overflow-x: auto; border: 1px solid var(--tt-green); }
+      .tt-content-md pre code { background: none; color: var(--tt-green); }
+      
+      .viewer-nav { margin: 1em 0; border-top: 1px solid var(--tt-green); padding-top: 1em; display: flex; justify-content: space-between; }
+      .viewer-nav a { color: var(--tt-cyan); text-decoration: none; }
+      .viewer-nav a:hover { background: var(--tt-cyan); color: var(--tt-black); }
     </style>
     <script>
       (function () {
@@ -99,6 +112,42 @@ HTML_FOOTER = """        </main>
     <script type="application/json" id="tt-map">{"480":"/","481":"/toolkit/","482":"/guides/","483":"/legal/","484":"/docs-hold/","100":"https://dontfeedmachines.com/","200":"https://dontfeedmachines.com/manifesto","300":"https://dontfeedmachines.com/words","400":"https://dontfeedmachines.com/kit","500":"https://dontfeedmachines.com/sectors","600":"https://dontfeedmachines.com/posture","700":"https://dontfeedmachines.com/license","800":"https://dontfeedmachines.com/crawlers","888":"https://dontfeedmachines.com/888","999":"https://dontfeedmachines.com/all","710":"https://legal.dontfeedmachines.com/"}</script>
     <script type="application/json" id="tt-search">[{"title":"P480 rsrc files","href":"/","kind":"page"},{"title":"P481 toolkit","href":"/toolkit/","kind":"page"},{"title":"P482 guides","href":"/guides/","kind":"page"},{"title":"P483 legal","href":"/legal/","kind":"page"},{"title":"P484 docs-hold","href":"/docs-hold/","kind":"page"},{"title":"P100 DFM index","href":"https://dontfeedmachines.com/","kind":"sector"},{"title":"P710 legal-db","href":"https://legal.dontfeedmachines.com/","kind":"sector"}]</script>
     <script type="module" src="/assets/dfm/teletext.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const params = new URLSearchParams(window.location.search);
+        const viewFile = params.get('view');
+        if (viewFile) {
+          document.getElementById('dir-view').style.display = 'none';
+          document.getElementById('file-view').style.display = 'block';
+          document.title = "P480 VIEW " + viewFile + " // DFM";
+          document.getElementById('fv-title').textContent = "FILE: " + viewFile;
+          document.getElementById('fv-raw').href = viewFile;
+          
+          fetch(viewFile)
+            .then(r => {
+              if (!r.ok) throw new Error("File not found");
+              return r.text();
+            })
+            .then(text => {
+              const fvContent = document.getElementById('fv-content');
+              if (viewFile.toLowerCase().endsWith('.md')) {
+                const script = document.createElement('script');
+                script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
+                script.onload = () => {
+                  fvContent.innerHTML = '<div class="tt-content-md">' + marked.parse(text) + '</div>';
+                };
+                document.head.appendChild(script);
+              } else {
+                fvContent.textContent = text;
+                fvContent.className = "tt-content tt-content-raw";
+              }
+            })
+            .catch(err => {
+              document.getElementById('fv-content').textContent = "Error loading file: " + err;
+            });
+        }
+      });
+    </script>
   </body>
 </html>"""
 
@@ -115,9 +164,12 @@ def generate_index_for_directory(dir_path, root_dir):
     ignored = {'.git', '.github', 'assets', 'index.html', 'CNAME', '.DS_Store', '.nojekyll'}
     
     dirs = [e for e in entries if os.path.isdir(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.')]
-    # Exclude the generated .html viewer files from the listing itself
-    files = [e for e in entries if os.path.isfile(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.') and not e.endswith('.html')]
     
+    files = []
+    for e in entries:
+        if os.path.isfile(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.'):
+            files.append(e)
+            
     rows = []
     
     for d in dirs:
@@ -130,53 +182,41 @@ def generate_index_for_directory(dir_path, root_dir):
         mtime = get_git_mtime(full_f)
         size = format_size(os.path.getsize(full_f))
         
-        # Check if it's a text file or extensionless file
         ext = os.path.splitext(f)[1].lower()
         is_text = ext in {'.md', '.txt', '.csv', '.json', '.yml', '.yaml', '.xml', ''}
         
         if is_text:
-            # Generate a styled HTML viewer for this file
-            try:
-                with open(full_f, 'r', encoding='utf-8', errors='replace') as raw_f:
-                    content = raw_f.read()
-                escaped_content = html.escape(content)
-                
-                viewer_title = f"VIEW {display_path}/{f}"
-                viewer_html = HTML_HEADER.replace("{page_title}", viewer_title)
-                viewer_html += f'\\n          <span class="dh yellow">FILE: {display_path}/{f}</span>'
-                viewer_html += f'\\n          <div class="tt-content">{escaped_content}</div>'
-                viewer_html += f'\\n          <br/><a href="./" style="color: var(--tt-cyan);">&lt;&lt; BACK TO DIRECTORY</a>'
-                viewer_html += '\\n          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>'
-                viewer_html += '\\n' + HTML_FOOTER
-                
-                # Save the viewer as f.html
-                with open(full_f + '.html', 'w', encoding='utf-8') as vf:
-                    vf.write(viewer_html)
-                
-                # Link to the generated HTML viewer, but display the original filename
-                rows.append(f'              <tr><td><a href="{f}.html">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
-            except Exception as e:
-                # Fallback to direct link if something goes wrong
-                rows.append(f'              <tr><td><a href="{f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
+            rows.append(f'              <tr><td><a href="?view={f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
         else:
-            # Normal direct link for binaries/images
             rows.append(f'              <tr><td><a href="{f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
 
-    parent_link = '              <tr><td><a href="../">Parent Directory</a></td><td>&nbsp;</td><td class="right">  - </td><td>&nbsp;</td></tr>'
+    parent_link = '              <tr><td><a href="../">Parent Directory</a></td><td>&nbsp;</td><td class="right">  - </td><td>&nbsp;</td></tr>\n'
     if rel_path == '.':
         parent_link = ''
 
-    # Build the directory index.html
     index_html = HTML_HEADER.replace("{page_title}", f"INDEX OF {display_path}")
-    index_html += f'\\n          <span class="dh yellow">INDEX OF {display_path}</span>'
-    index_html += '\\n          <div class="ls-wrap">\\n            <table class="ls">'
-    index_html += '\\n              <tr><th>Name</th><th>Last modified</th><th class="right">Size</th><th>Description</th></tr>\\n'
+    
+    index_html += f'\n          <div id="dir-view">'
+    index_html += f'\n            <span class="dh yellow">INDEX OF {display_path}</span>'
+    index_html += '\n            <div class="ls-wrap">\n              <table class="ls">'
+    index_html += '\n                <tr><th>Name</th><th>Last modified</th><th class="right">Size</th><th>Description</th></tr>\n'
     if parent_link:
-        index_html += parent_link + '\\n'
-    index_html += '\\n'.join(rows)
-    index_html += '\\n            </table>\\n          </div>'
-    index_html += '\\n          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>'
-    index_html += '\\n' + HTML_FOOTER
+        index_html += parent_link
+    index_html += '\n'.join(rows)
+    index_html += '\n              </table>\n            </div>'
+    index_html += '\n          </div>'
+    
+    index_html += '\n          <div id="file-view" style="display: none;">'
+    index_html += '\n            <span class="dh yellow" id="fv-title"></span>'
+    index_html += '\n            <div class="tt-content" id="fv-content">Loading...</div>'
+    index_html += '\n            <div class="viewer-nav">'
+    index_html += '\n              <a href="?">&lt;&lt; BACK TO DIRECTORY</a>'
+    index_html += '\n              <a id="fv-raw" href="">[ DOWNLOAD / VIEW RAW ]</a>'
+    index_html += '\n            </div>'
+    index_html += '\n          </div>'
+    
+    index_html += '\n          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>'
+    index_html += '\n' + HTML_FOOTER
 
     index_path = os.path.join(dir_path, 'index.html')
     with open(index_path, 'w', encoding='utf-8') as f_idx:
@@ -187,7 +227,6 @@ def main():
     ignored_walk = {'.git', '.github', 'assets'} 
     
     for current_dir, dirs, files in os.walk(root_dir):
-        # Prevent walking into ignored directories
         dirs[:] = [d for d in dirs if d not in ignored_walk and not d.startswith('.')]
         generate_index_for_directory(current_dir, root_dir)
 

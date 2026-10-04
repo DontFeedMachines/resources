@@ -1,4 +1,4 @@
-name: deploy Index of dir real nums
+name: deploy Index of/ dir real nums
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: '3.10'
           
-      - name: Generate index.html with accurate size and date
+      - name: generate index.html with accurate size and date
         run: python assets/scripts/gen-index.py
         
       - name: Setup Pages
