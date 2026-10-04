@@ -45,7 +45,7 @@ HTML_HEADER = """<!doctype html>
       address { color: var(--tt-green); font-style: normal; font-size: 0.6em; margin-top: 1em; }
       
       /* Viewer Styles */
-      .tt-content { font-family: 'Teletext50','Spline Sans Mono', 'Courier New', monospace; color: var(--tt-white); padding: 1em 0; font-size: 0.8em; line-height: 1.4; }
+      .tt-content { font-family: 'Spline Sans Mono', 'Courier New', monospace; color: var(--tt-white); padding: 1em 0; font-size: 0.8em; line-height: 1.4; }
       .tt-content-raw { white-space: pre-wrap; }
       .tt-content-md h1, .tt-content-md h2, .tt-content-md h3 { color: var(--tt-magenta); font-weight: normal; margin-top: 1.5em; }
       .tt-content-md h1 { border-bottom: 1px solid var(--tt-magenta); padding-bottom: 0.2em; }
