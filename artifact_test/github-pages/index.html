@@ -1,34 +1,9 @@
-import os
-import subprocess
-import math
-
-def get_git_mtime(filepath):
-    try:
-        result = subprocess.run(
-            ['git', 'log', '-1', '--format=%cd', '--date=format:%Y-%m-%d %H:%M', '--', filepath],
-            capture_output=True, text=True, check=True
-        )
-        date_str = result.stdout.strip()
-        return date_str if date_str else "Unknown"
-    except Exception:
-        return "Unknown"
-
-def format_size(size_in_bytes):
-    if size_in_bytes == 0:
-        return "0B"
-    size_name = ("B", "K", "M", "G", "T")
-    i = int(math.floor(math.log(size_in_bytes, 1024)))
-    p = math.pow(1024, i)
-    s = round(size_in_bytes / p, 1)
-    s_str = str(s).replace(".0", "")
-    return f"{s_str}{size_name[i]}"
-
-HTML_HEADER = """<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>P480 {page_title} // DFM</title>
+    <title>P480 INDEX OF /RSRC/artifact_test/github-pages // DFM</title>
     <meta name="description" content="DFM resources archive." />
     <meta name="robots" content="noai, noimageai" />
     <meta name="tdm-reservation" content="1" />
@@ -45,7 +20,7 @@ HTML_HEADER = """<!doctype html>
       address { color: var(--tt-green); font-style: normal; font-size: 0.6em; margin-top: 1em; }
       
       /* Viewer Styles */
-      .tt-content { font-family: 'Teletext50','Spline Sans Mono', 'Courier New', monospace; color: var(--tt-white); padding: 1em 0; font-size: 0.8em; line-height: 1.4; }
+      .tt-content { font-family: 'Spline Sans Mono', 'Courier New', monospace; color: var(--tt-white); padding: 1em 0; font-size: 0.8em; line-height: 1.4; }
       .tt-content-raw { white-space: pre-wrap; }
       .tt-content-md h1, .tt-content-md h2, .tt-content-md h3 { color: var(--tt-magenta); font-weight: normal; margin-top: 1.5em; }
       .tt-content-md h1 { border-bottom: 1px solid var(--tt-magenta); padding-bottom: 0.2em; }
@@ -95,9 +70,27 @@ HTML_HEADER = """<!doctype html>
           <a href="https://dontfeedmachines.com/"><span class="n">100</span>dfm</a>
           <a href="https://legal.dontfeedmachines.com/"><span class="n">710</span>legal-db</a>
         </nav>
-        <main id="main" class="tt-body">"""
-
-HTML_FOOTER = """        </main>
+        <main id="main" class="tt-body">
+          <div id="dir-view">
+            <span class="dh yellow">INDEX OF /RSRC/artifact_test/github-pages</span>
+            <div class="ls-wrap">
+              <table class="ls">
+                <tr><th>Name</th><th>Last modified</th><th class="right">Size</th><th>Description</th></tr>
+              <tr><td><a href="../">Parent Directory</a></td><td>&nbsp;</td><td class="right">  - </td><td>&nbsp;</td></tr>
+              <tr><td><a href="artifact.tar">artifact.tar</a></td><td>Unknown</td><td class="right">660K</td><td>&nbsp;</td></tr>
+              </table>
+            </div>
+          </div>
+          <div id="file-view" style="display: none;">
+            <span class="dh yellow" id="fv-title"></span>
+            <div class="tt-content" id="fv-content">Loading...</div>
+            <div class="viewer-nav">
+              <a href="?">&lt;&lt; BACK TO DIRECTORY</a>
+              <a id="fv-raw" href="">[ DOWNLOAD / VIEW RAW ]</a>
+            </div>
+          </div>
+          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>
+        </main>
         <nav class="tt-fast" aria-label="fastext">
           <a href="/" class="f-red" data-fast="r">INDEX<span class="k" aria-hidden="true">R</span></a>
           <a href="/toolkit/" class="f-green" data-fast="g">TOOLKIT<span class="k" aria-hidden="true">G</span></a>
@@ -149,86 +142,4 @@ HTML_FOOTER = """        </main>
       });
     </script>
   </body>
-</html>"""
-
-def generate_index_for_directory(dir_path, root_dir):
-    rel_path = os.path.relpath(dir_path, root_dir)
-    if rel_path == '.':
-        display_path = "/RSRC"
-    else:
-        display_path = f"/RSRC/{rel_path}"
-
-    entries = os.listdir(dir_path)
-    entries.sort()
-    
-    ignored = {'.git', '.github', 'assets', 'index.html', 'CNAME', '.DS_Store', '.nojekyll'}
-    
-    dirs = [e for e in entries if os.path.isdir(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.')]
-    
-    files = []
-    for e in entries:
-        if os.path.isfile(os.path.join(dir_path, e)) and e not in ignored and not e.startswith('.'):
-            files.append(e)
-            
-    rows = []
-    
-    for d in dirs:
-        full_d = os.path.join(dir_path, d)
-        mtime = get_git_mtime(full_d)
-        rows.append(f'              <tr><td><a href="{d}/">{d}/</a></td><td>{mtime}</td><td class="right">  - </td><td>&nbsp;</td></tr>')
-        
-    for f in files:
-        full_f = os.path.join(dir_path, f)
-        mtime = get_git_mtime(full_f)
-        size = format_size(os.path.getsize(full_f))
-        
-        ext = os.path.splitext(f)[1].lower()
-        is_text = ext in {'.md', '.txt', '.csv', '.json', '.yml', '.yaml', '.xml', ''}
-        
-        if is_text:
-            rows.append(f'              <tr><td><a href="?view={f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
-        else:
-            rows.append(f'              <tr><td><a href="{f}">{f}</a></td><td>{mtime}</td><td class="right">{size}</td><td>&nbsp;</td></tr>')
-
-    parent_link = '              <tr><td><a href="../">Parent Directory</a></td><td>&nbsp;</td><td class="right">  - </td><td>&nbsp;</td></tr>\n'
-    if rel_path == '.':
-        parent_link = ''
-
-    index_html = HTML_HEADER.replace("{page_title}", f"INDEX OF {display_path}")
-    
-    index_html += f'\n          <div id="dir-view">'
-    index_html += f'\n            <span class="dh yellow">INDEX OF {display_path}</span>'
-    index_html += '\n            <div class="ls-wrap">\n              <table class="ls">'
-    index_html += '\n                <tr><th>Name</th><th>Last modified</th><th class="right">Size</th><th>Description</th></tr>\n'
-    if parent_link:
-        index_html += parent_link
-    index_html += '\n'.join(rows)
-    index_html += '\n              </table>\n            </div>'
-    index_html += '\n          </div>'
-    
-    index_html += '\n          <div id="file-view" style="display: none;">'
-    index_html += '\n            <span class="dh yellow" id="fv-title"></span>'
-    index_html += '\n            <div class="tt-content" id="fv-content">Loading...</div>'
-    index_html += '\n            <div class="viewer-nav">'
-    index_html += '\n              <a href="?">&lt;&lt; BACK TO DIRECTORY</a>'
-    index_html += '\n              <a id="fv-raw" href="">[ DOWNLOAD / VIEW RAW ]</a>'
-    index_html += '\n            </div>'
-    index_html += '\n          </div>'
-    
-    index_html += '\n          <address>Apache/2.4.41 (Ubuntu) Server at rsrc.dontfeedmachines.com Port 80</address>'
-    index_html += '\n' + HTML_FOOTER
-
-    index_path = os.path.join(dir_path, 'index.html')
-    with open(index_path, 'w', encoding='utf-8') as f_idx:
-        f_idx.write(index_html)
-
-def main():
-    root_dir = '.'
-    ignored_walk = {'.git', '.github', 'assets'} 
-    
-    for current_dir, dirs, files in os.walk(root_dir):
-        dirs[:] = [d for d in dirs if d not in ignored_walk and not d.startswith('.')]
-        generate_index_for_directory(current_dir, root_dir)
-
-if __name__ == "__main__":
-    main()
+</html>
